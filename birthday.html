@@ -69,15 +69,21 @@
   .cake { font-size:5rem; animation: wiggle 1.2s ease-in-out infinite; display:inline-block; }
   @keyframes wiggle { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(6deg)} }
 
-  pre.terminal {
-    display:none; background:#000; color:#0f0; text-align:left; padding:25px;
+  .prescription {
+    display:none; background:#fdfdf5; color:#1a3a5c; text-align:left; padding:30px;
     border-radius:12px; margin:30px auto; max-width:640px;
-    font-family: 'Consolas','Courier New',monospace; font-size:1rem;
-    border:1px solid #0f0; box-shadow:0 0 25px rgba(0,255,0,.35);
-    white-space:pre-wrap; overflow-x:auto;
+    font-family: 'Segoe UI', Arial, sans-serif; font-size:1.05rem; line-height:1.9;
+    border:1px solid #9cc; box-shadow:0 0 25px rgba(120,180,220,.45);
+    position:relative;
   }
-  .cursor::after { content:'▊'; animation: blink 1s steps(1) infinite; }
-  @keyframes blink { 50%{opacity:0} }
+  .prescription .rx { font-size:3.2rem; color:#c0392b; font-weight:bold; font-style:italic; }
+  .prescription .letterhead { border-bottom:2px solid #1a3a5c; padding-bottom:10px; margin-bottom:15px;
+    font-weight:bold; font-size:1.1rem; }
+  .prescription .stamp {
+    display:inline-block; margin-top:15px; padding:6px 18px; border:3px double #c0392b;
+    color:#c0392b; font-weight:bold; transform:rotate(-8deg); border-radius:6px;
+  }
+  .prescription .sig { margin-top:10px; font-style:italic; font-family:'Brush Script MT',cursive; font-size:1.4rem; }
 </style>
 </head>
 <body>
@@ -116,7 +122,7 @@
     universe celebrates YOU! ✨🥳✨</p>
  </div>
 
- <pre class="terminal" id="terminal"></pre>
+ <div class="prescription" id="prescription"></div>
 </section>
 
 <script>
@@ -175,32 +181,23 @@ function revealSurprise() {
   s.style.display = 'block';
   s.scrollIntoView({behavior:'smooth'});
   burstConfetti();
-  // Fun tech-style ending
-  const term = document.getElementById('terminal');
-  term.style.display = 'block';
-  const lines = [
-    '$ bash happy_birthday.sh --to="Rinky"',
-    '> Loading happiness........ [OK]',
-    '> Injecting love............ [OK]',
-    '> Deploying joy.exe........ [OK]',
-    '',
-    'if (rinky.birthday == true) {',
-    '    life.happiness = Infinity;  💖',
-    '    cake.eat(count = unlimited); 🍰',
-    '}',
-    '',
-    'echo "sudo wish rinky --forever-happy"',
-    '> Wish granted ✅  Happy Birthday, Rinky! 🎂▊'
-  ];
-  term.textContent = '';
-  let i = 0;
-  (function type() {
-    if (i < lines.length) {
-      term.textContent += lines[i] + '\n';
-      i++;
-      setTimeout(type, 500);
-    }
-  })();
+  // Medical-style ending: doctor's prescription
+  const rx = document.getElementById('prescription');
+  rx.style.display = 'block';
+  rx.innerHTML = `
+    <div class="letterhead">🩺 Dr. Love, M.D. — Department of Happiness &amp; Celebration 💉</div>
+    <div class="rx">℞</div>
+    <strong>Patient:</strong> Ms. Rinky &nbsp;|&nbsp; <strong>Date:</strong> Her Birthday &nbsp;|&nbsp; <strong>Age:</strong> Timeless ✨<br><br>
+    <strong>Diagnosis:</strong> Acute awesomeness with a severe overdose of wonderful. Incurable. 💖<br><br>
+    <strong>Prescribed treatment (repeat daily, forever):</b><br>
+    &nbsp;&nbsp;• Cake 🍰 — 3 servings/day (unlimited on birthdays)<br>
+    &nbsp;&nbsp;• Laughter 😂 — as needed, no maximum dose<br>
+    &nbsp;&nbsp;• Love 💝 — 1000 mg every morning<br>
+    &nbsp;&nbsp;• Celebration 🎉 — until fully satisfied<br><br>
+    <strong>Warning:</strong> Side effects include excessive smiling, glowing skin, and uncontrollable joy.<br><br>
+    <span class="stamp">WISH GRANTED ✔ HAPPY BIRTHDAY, RINKY! 🎂</span><br>
+    <span class="sig">— Dr. Love 💉💉</span>
+  `;
 }
 
 // Extra confetti burst on surprise
