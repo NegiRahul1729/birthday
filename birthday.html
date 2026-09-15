@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎂 Happy Birthday Rinky 🎂</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1a053, #4a0e6e, #1a053);
+    color:#fff; text-align:center; overflow-x:hidden; min-height:100vh;
+  }
+  section { padding:60px 20px; max-width:900px; margin:auto; }
+
+  h1 {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    background: linear-gradient(90deg,#ffd700,#ff6ec7,#7df9ff,#ffd700);
+    background-size:300% 300%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: shine 4s ease infinite;
+  }
+  @keyframes shine { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+  .sub { font-size:1.3rem; margin-top:15px; color:#ffe6ff; animation: fadeUp 2s ease; }
+
+  .balloon { position:fixed; bottom:-120px; font-size:3rem; animation: floatUp linear infinite; z-index:1; opacity:.85; pointer-events:none; }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-120vh) rotate(25deg); }
+  }
+  .confetti { position:fixed; top:-20px; width:10px; height:14px; z-index:1; pointer-events:none;
+    animation: fall linear infinite; }
+  @keyframes fall { 0%{transform:translateY(0) rotate(0)} 100%{transform:translateY(105vh) rotate(720deg)} }
+
+  @keyframes fadeUp { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
+
+  .wishes {
+    background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+    border-radius:20px; padding:35px; margin:30px auto;
+    font-size:1.25rem; line-height:1.9; backdrop-filter: blur(6px);
+    animation: fadeUp 1.5s ease;
+  }
+  .wishes .heart { font-size:1.6rem; }
+
+  .gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:30px; }
+  .gallery img {
+    width:240px; height:240px; object-fit:cover; border-radius:16px;
+    border:3px solid #ffd700; transition: transform .4s, box-shadow .4s; cursor:pointer;
+  }
+  .gallery img:hover { transform: scale(1.08) rotate(2deg); box-shadow:0 10px 40px rgba(255,215,0,.5); }
+
+  .music-btn, .reveal-btn {
+    font-size:1.15rem; padding:15px 35px; margin:15px 10px; border:none; border-radius:50px;
+    background: linear-gradient(90deg,#ff6ec7,#ffd700); color:#3a003; font-weight:bold;
+    cursor:pointer; box-shadow:0 5px 25px rgba(255,110,199,.5); transition: transform .2s;
+  }
+  .music-btn:hover, .reveal-btn:hover { transform: scale(1.07); }
+
+  #surprise {
+    display:none; margin-top:30px; padding:40px 25px;
+    background: radial-gradient(circle,#6b0f8a,#1a053);
+    border:2px dashed #ffd700; border-radius:24px; animation: popIn .8s ease;
+  }
+  #surprise h2 { font-size:2.2rem; color:#ffd700; margin-bottom:15px; }
+  #surprise p { font-size:1.3rem; line-height:1.8; }
+  @keyframes popIn { from{transform:scale(.4); opacity:0} to{transform:scale(1); opacity:1} }
+
+  .cake { font-size:5rem; animation: wiggle 1.2s ease-in-out infinite; display:inline-block; }
+  @keyframes wiggle { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(6deg)} }
+
+  pre.terminal {
+    display:none; background:#000; color:#0f0; text-align:left; padding:25px;
+    border-radius:12px; margin:30px auto; max-width:640px;
+    font-family: 'Consolas','Courier New',monospace; font-size:1rem;
+    border:1px solid #0f0; box-shadow:0 0 25px rgba(0,255,0,.35);
+    white-space:pre-wrap; overflow-x:auto;
+  }
+  .cursor::after { content:'▊'; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50%{opacity:0} }
+</style>
+</head>
+<body>
+
+<section>
+ <div class="cake">🎂</div>
+ <h1>Happy Birthday Rinky!</h1>
+ <p class="sub">🎈 Wishing you the happiest of birthdays, today and always 🎈</p>
+
+ <div class="wishes">
+    <span class="heart">💖</span> Dear Rinky,<br><br>
+    On your special day, I just want you to know how much light you bring into everyone's life.
+    May this year shower you with endless laughter, beautiful surprises, and dreams that finally
+    come true. You deserve all the cake, all the love, and all the happiness in the world.
+    <br><br><strong>Happy Birthday once again! 🥳</strong>
+ </div>
+
+ <h2>📸 Memories</h2>
+ <div class="gallery">
+    <img src="https://placehold.co/240x240/ffd700/4a0e6e?text=Memory+1" alt="Memory 1">
+    <img src="https://placehold.co/240x240/ff6ec7/4a0e6e?text=Memory+2" alt="Memory 2">
+    <img src="https://placehold.co/240x240/7df9ff/4a0e6e?text=Memory+3" alt="Memory 3">
+    <img src="https://placehold.co/240x240/ffd700/4a0e6e?text=Memory+4" alt="Memory 4">
+ </div>
+
+ <div style="margin-top:40px">
+    <button class="music-btn" onclick="toggleMusic()">🎵 Play Birthday Music</button>
+    <button class="reveal-btn" onclick="revealSurprise()">🎁 Click to reveal your surprise</button>
+ </div>
+
+ <div id="surprise">
+    <h2>🎉 SURPRISE! 🎉</h2>
+    <p>You are officially the <strong>Queen of this Day</strong> 👑<br><br>
+    Fun fact: It is scientifically proven (by me 🤓) that people named Rinky
+    are 100% more awesome on their birthday. Enjoy every moment — today the whole
+    universe celebrates YOU! ✨🥳✨</p>
+ </div>
+
+ <pre class="terminal" id="terminal"></pre>
+</section>
+
+<script>
+// Balloons
+const balloonEmojis = ['🎈','🎉','🎊','✨','💖'];
+for (let i = 0; i < 14; i++) {
+  const b = document.createElement('div');
+  b.className = 'balloon';
+  b.textContent = balloonEmojis[i % balloonEmojis.length];
+  b.style.left = Math.random() * 100 + 'vw';
+  b.style.animationDuration = (6 + Math.random() * 6) + 's';
+  b.style.animationDelay = (Math.random() * 8) + 's';
+  document.body.appendChild(b);
+}
+// Confetti
+const colors = ['#ffd700','#ff6ec7','#7df9ff','#adff2f','#ff4d4d'];
+for (let i = 0; i < 60; i++) {
+  const c = document.createElement('div');
+  c.className = 'confetti';
+  c.style.left = Math.random() * 100 + 'vw';
+  c.style.background = colors[i % colors.length];
+  c.style.animationDuration = (3 + Math.random() * 4) + 's';
+  c.style.animationDelay = (Math.random() * 5) + 's';
+  document.body.appendChild(c);
+}
+
+// Music (Web Audio birthday melody — no file needed)
+let audioCtx = null, playing = false, loopId = null;
+const notes = [
+  [523.25,.5],[523.25,.25],[587.33,1],[523.25,1],[698.46,1],[659.25,2],
+  [523.25,.5],[523.25,.25],[587.33,1],[523.25,1],[783.99,1],[698.46,2]
+];
+function playMelody() {
+  audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+  let t = audioCtx.currentTime;
+  notes.forEach(([f,d]) => {
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = 'triangle'; o.frequency.value = f;
+    g.gain.setValueAtTime(.25, t);
+    g.gain.exponentialRampToValueAtTime(.01, t + d);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(t); o.stop(t + d);
+    t += d;
+  });
+  loopId = setTimeout(playMelody, (t - audioCtx.currentTime) * 1000);
+}
+function toggleMusic() {
+  playing = !playing;
+  if (playing) { playMelody(); event.target.textContent = '⏸ Pause Music'; }
+  else { clearTimeout(loopId); audioCtx && audioCtx.suspend(); audioCtx.resume(); event.target.textContent = '🎵 Play Birthday Music'; if(!playing){clearTimeout(loopId); if(audioCtx) audioCtx.close(); audioCtx=null;} }
+}
+
+// Surprise
+function revealSurprise() {
+  const s = document.getElementById('surprise');
+  s.style.display = 'block';
+  s.scrollIntoView({behavior:'smooth'});
+  burstConfetti();
+  // Fun tech-style ending
+  const term = document.getElementById('terminal');
+  term.style.display = 'block';
+  const lines = [
+    '$ bash happy_birthday.sh --to="Rinky"',
+    '> Loading happiness........ [OK]',
+    '> Injecting love............ [OK]',
+    '> Deploying joy.exe........ [OK]',
+    '',
+    'if (rinky.birthday == true) {',
+    '    life.happiness = Infinity;  💖',
+    '    cake.eat(count = unlimited); 🍰',
+    '}',
+    '',
+    'echo "sudo wish rinky --forever-happy"',
+    '> Wish granted ✅  Happy Birthday, Rinky! 🎂▊'
+  ];
+  term.textContent = '';
+  let i = 0;
+  (function type() {
+    if (i < lines.length) {
+      term.textContent += lines[i] + '\n';
+      i++;
+      setTimeout(type, 500);
+    }
+  })();
+}
+
+// Extra confetti burst on surprise
+function burstConfetti() {
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.top = Math.random() * 40 + 'vh';
+    c.style.background = colors[i % colors.length];
+    c.style.animationDuration = (2 + Math.random() * 3) + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 6000);
+  }
+}
+</script>
+</body>
+</html>
