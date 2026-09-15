@@ -361,6 +361,27 @@
       });
       loopId = setTimeout(playMelody, (t - audioCtx.currentTime) * 1000);
     }
+    // Try to autoplay when page opens; if the browser blocks it,
+    // start automatically on the visitor's very first tap/click/scroll.
+    function startMusicAuto() {
+      if (playing) return;
+      playing = true;
+      playMelody();
+      const btn = document.querySelector('.music-btn');
+      if (btn) btn.textContent = '⏸ Pause Music';
+    }
+    window.addEventListener('load', () => {
+      startMusicAuto();
+      if (audioCtx && audioCtx.state === 'suspended') {
+        const unlock = () => {
+          audioCtx.resume().then(() => { if (!playing) { playing = true; playMelody(); } });
+          ['click', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+            window.removeEventListener(ev, unlock));
+        };
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+          window.addEventListener(ev, unlock, { passive: true }));
+      }
+    });
     function toggleMusic() {
       playing = !playing;
       if (playing) { playMelody(); event.target.textContent = '⏸ Pause Music'; }
@@ -377,7 +398,7 @@
       const rx = document.getElementById('prescription');
       rx.style.display = 'block';
       rx.innerHTML = `
-    <div class="letterhead">🩺 Dr. Love, M.D. — Department of Happiness &amp; Celebration 💉</div>
+    <div class="letterhead">🩺 Dr.Rukxi, M.D. — Department of Happiness &amp; Celebration 💉</div>
     <div class="rx">℞</div>
     <strong>Patient:</strong> Ms. Rinky &nbsp;|&nbsp; <strong>Date:</strong> Her Birthday &nbsp;|&nbsp; <strong>Age:</strong> Timeless ✨<br><br>
     <strong>Diagnosis:</strong> Acute awesomeness with a severe overdose of wonderful. Incurable. 💖<br><br>
