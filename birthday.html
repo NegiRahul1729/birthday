@@ -14,11 +14,19 @@
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #1a053, #4a0e6e, #1a053);
-      color: #fff;
+      background: linear-gradient(135deg, #ffd6f2, #ffe9b8, #b8f7ff, #d6ffd6, #ffd6f2);
+      background-size: 400% 400%;
+      animation: bgShift 16s ease infinite;
+      color: #4a1560;
       text-align: center;
       overflow-x: hidden;
       min-height: 100vh;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
     }
 
     section {
@@ -54,7 +62,7 @@
     .sub {
       font-size: 1.3rem;
       margin-top: 15px;
-      color: #ffe6ff;
+      color: #b0257e;
       animation: fadeUp 2s ease;
     }
 
@@ -111,15 +119,21 @@
     }
 
     .wishes {
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(255, 255, 255, .65);
+      border: 1px solid rgba(208, 62, 160, .35);
+      box-shadow: 0 8px 30px rgba(255, 110, 199, .25);
       border-radius: 20px;
       padding: 35px;
       margin: 30px auto;
       font-size: 1.25rem;
       line-height: 1.9;
+      color: #4a1560;
       backdrop-filter: blur(6px);
       animation: fadeUp 1.5s ease;
+    }
+
+    .wishes strong {
+      color: #c0397b;
     }
 
     .wishes .heart {
@@ -177,12 +191,13 @@
       color: #4a1560;
       border: 2px dashed #d43fa0;
       border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(255, 110, 199, .3);
       animation: popIn .8s ease;
     }
 
     #surprise h2 {
       font-size: 2.2rem;
-      color: #ffd700;
+      color: #d43fa0;
       margin-bottom: 15px;
     }
 
@@ -295,10 +310,10 @@
 
     <h2>📸 Memories</h2>
     <div class="gallery">
-      <img src="https://placehold.co/240x240/ffd700/4a0e6e?text=Memory+1" alt="Memory 1">
-      <img src="https://placehold.co/240x240/ff6ec7/4a0e6e?text=Memory+2" alt="Memory 2">
-      <img src="https://placehold.co/240x240/7df9ff/4a0e6e?text=Memory+3" alt="Memory 3">
-      <img src="https://placehold.co/240x240/ffd700/4a0e6e?text=Memory+4" alt="Memory 4">
+      <img src="https://placehold.co/240x240/ff6ec7/ffffff?text=Memory+1" alt="Memory 1">
+      <img src="https://placehold.co/240x240/ffd700/ffffff?text=Memory+2" alt="Memory 2">
+      <img src="https://placehold.co/240x240/2ec4e6/ffffff?text=Memory+3" alt="Memory 3">
+      <img src="https://placehold.co/240x240/8b5cf6/ffffff?text=Memory+4" alt="Memory 4">
     </div>
 
     <div style="margin-top:40px">
@@ -409,7 +424,7 @@
     &nbsp;&nbsp;• Celebration 🎉 — until fully satisfied<br><br>
     <strong>Warning:</strong> Side effects include excessive smiling, glowing skin, and uncontrollable joy.<br><br>
     <span class="stamp">WISH GRANTED ✔ HAPPY BIRTHDAY, RINKY! 🎂</span><br>
-    <span class="sig">— Dr. Love 💉💉</span>
+    <span class="sig">— Dr.Rukxi 💉💉</span>
   `;
     }
 
